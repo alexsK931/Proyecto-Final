@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agendar Cita | Barber Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --barber-gold: #d4af37;
+            --barber-black: #0b0b0b;
+            --barber-gray: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--barber-black);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        /* Estilo del contenedor principal */
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: var(--barber-gray);
+            border: 1px solid var(--barber-gold);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: var(--barber-gold);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .user-welcome {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .form-label {
+            color: var(--barber-gold);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .form-control, .form-select {
+            background-color: #262626;
+            border: 1px solid #444;
+            color: #fff !important;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #333;
+            border-color: var(--barber-gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-confirm {
+            background-color: var(--barber-gold);
+            color: #000;
+            font-weight: bold;
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            border: none;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-confirm:hover {
+            background-color: #b8962e;
+            transform: translateY(-2px);
+        }
+
+        .logout-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .logout-link:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="form-container">
+        <h1>Nueva Cita</h1>
+
+        <div class="user-welcome">
+            Bienvenido, <br>
+            <strong th:text="${persona.nombre + ' ' + persona.primerApellido + ' ' + (persona.segundoApellido != null ? persona.segundoApellido : '')}">Usuario</strong>
+        </div>
+
+        <form action="#" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Establecimiento</label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>Seleccione local...</option>
+                    <option>Barbería Imperial</option>
+                    <option>Corte & Estilo Central</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sucursal</label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>Seleccione sucursal...</option>
+                    <option>Norte - Av. Politécnico</option>
+                    <option>Sur - Insurgentes</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Barbero Especialista</label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>Seleccione barbero...</option>
+                    <option>Marcos "The Blade" Rivas</option>
+                    <option>Sergio "Gold Hands" Torres</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha y Hora</label>
+                <input type="datetime-local" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-confirm">Agendar Ahora</button>
+
+            <a th:href="@{/}" class="logout-link">Cerrar Sesión</a>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
