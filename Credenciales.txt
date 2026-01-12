@@ -1,0 +1,7 @@
+Rol de Cliente
+Usuario: a@gmail.com
+Contraseña: password
+ 
+Rol de Administrador
+usuario: admin@barberia.com
+contraseña: admin
